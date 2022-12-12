@@ -1,0 +1,33 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega16A"</DEVICE>
+ <WORKING_DIR>c:\users\daniel\Documents\Atmel Studio\7.0\Traffic_light\Traffic_light\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>c:\users\daniel\Documents\Atmel Studio\7.0\Traffic_light\Traffic_light\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m16Adef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>c:\users\daniel\Documents\Atmel Studio\7.0\Traffic_light\Traffic_light\Debug\Traffic_light.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Traffic_light.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Traffic_light.map</FILE>
+  <FILE>Traffic_light.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <COLD><FILE>c:\users\daniel\Documents\Atmel Studio\7.0\Traffic_light\Traffic_light\main.asm</FILE><LINE>10</LINE></COLD>
+  <INIT_IO><FILE>c:\users\daniel\Documents\Atmel Studio\7.0\Traffic_light\Traffic_light\main.asm</FILE><LINE>56</LINE></INIT_IO>
+  <MAIN><FILE>c:\users\daniel\Documents\Atmel Studio\7.0\Traffic_light\Traffic_light\main.asm</FILE><LINE>20</LINE></MAIN>
+  <MOVE_LEFT><FILE>c:\users\daniel\Documents\Atmel Studio\7.0\Traffic_light\Traffic_light\main.asm</FILE><LINE>28</LINE></MOVE_LEFT>
+  <MOVE_RIGHT><FILE>c:\users\daniel\Documents\Atmel Studio\7.0\Traffic_light\Traffic_light\main.asm</FILE><LINE>36</LINE></MOVE_RIGHT>
+  <WAIT_RELEASE><FILE>c:\users\daniel\Documents\Atmel Studio\7.0\Traffic_light\Traffic_light\main.asm</FILE><LINE>45</LINE></WAIT_RELEASE>
+  <RED_YELLOW><FILE>c:\users\daniel\Documents\Atmel Studio\7.0\Traffic_light\Traffic_light\main.asm</FILE><LINE>52</LINE></RED_YELLOW>
+ </LABELS>
+</ASSEMBLER_INFO>
