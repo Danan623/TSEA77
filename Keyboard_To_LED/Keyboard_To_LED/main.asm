@@ -1,5 +1,6 @@
 
-; 1. Write a program that reads a value from an input port and displays it on a set of 8 LED lamps. 
+; 1. Write a program that reads a value from an input port and displays it on a set of 4 LED lamps.
+; Hexa keyboard 0 to F will be 4 led if we choose to display it in binary.  
 ; The program should continuously read the input value and update the LED lamps to match the value.
 ; This program is uses a Hexa Keyboard but the code is easy to change to another input hardware.
 ; This hardware use a Dalia card that is developed at Linköping University
@@ -30,10 +31,10 @@ WAIT_RELEASE:
 
 INIT_IO: 
 	clr r17
-	out DDRA, r17 ; port-in : A0 -> A7
+	out DDRA, r17 ; port-in : A0 -> A3 (0 to 15 binary)
 	out DDRD, r17 ; port-in : D0 if we use a HEXA keyboard (the strobe to indicate button pressed needs a port -in)
 	
 	ldi r18,$FF 
-	out DDRB, r18 ; port-out : B0 -> B7 
+	out DDRB, r18 ; port-out : B0 -> B3 (0 to 15 binary) 
 
 	ret

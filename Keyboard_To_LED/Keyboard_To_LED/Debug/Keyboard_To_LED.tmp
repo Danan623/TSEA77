@@ -1,0 +1,31 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega16A"</DEVICE>
+ <WORKING_DIR>C:\Users\Daniel\Documents\Atmel Studio\7.0\Keyboard_To_LED\Keyboard_To_LED\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\Keyboard_To_LED\Keyboard_To_LED\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m16Adef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\Keyboard_To_LED\Keyboard_To_LED\Debug\Keyboard_To_LED.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Keyboard_To_LED.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Keyboard_To_LED.map</FILE>
+  <FILE>Keyboard_To_LED.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <COLD><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\Keyboard_To_LED\Keyboard_To_LED\main.asm</FILE><LINE>7</LINE></COLD>
+  <INIT_IO><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\Keyboard_To_LED\Keyboard_To_LED\main.asm</FILE><LINE>31</LINE></INIT_IO>
+  <MAIN><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\Keyboard_To_LED\Keyboard_To_LED\main.asm</FILE><LINE>17</LINE></MAIN>
+  <CHANGE_VALUE><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\Keyboard_To_LED\Keyboard_To_LED\main.asm</FILE><LINE>23</LINE></CHANGE_VALUE>
+  <WAIT_RELEASE><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\Keyboard_To_LED\Keyboard_To_LED\main.asm</FILE><LINE>26</LINE></WAIT_RELEASE>
+ </LABELS>
+</ASSEMBLER_INFO>
