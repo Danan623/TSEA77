@@ -1,0 +1,35 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega16A"</DEVICE>
+ <WORKING_DIR>c:\users\daniel\Documents\Atmel Studio\7.0\LaxDemo5\LaxDemo5\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>c:\users\daniel\Documents\Atmel Studio\7.0\LaxDemo5\LaxDemo5\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m16Adef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>c:\users\daniel\Documents\Atmel Studio\7.0\LaxDemo5\LaxDemo5\Debug\LaxDemo5.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>LaxDemo5.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>LaxDemo5.map</FILE>
+  <FILE>LaxDemo5.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <COLD><FILE>c:\users\daniel\Documents\Atmel Studio\7.0\LaxDemo5\LaxDemo5\main.asm</FILE><LINE>10</LINE></COLD>
+  <INIT_IO><FILE>c:\users\daniel\Documents\Atmel Studio\7.0\LaxDemo5\LaxDemo5\main.asm</FILE><LINE>59</LINE></INIT_IO>
+  <MAIN><FILE>c:\users\daniel\Documents\Atmel Studio\7.0\LaxDemo5\LaxDemo5\main.asm</FILE><LINE>18</LINE></MAIN>
+  <READ_DATA><FILE>c:\users\daniel\Documents\Atmel Studio\7.0\LaxDemo5\LaxDemo5\main.asm</FILE><LINE>23</LINE></READ_DATA>
+  <TOGGLE><FILE>c:\users\daniel\Documents\Atmel Studio\7.0\LaxDemo5\LaxDemo5\main.asm</FILE><LINE>34</LINE></TOGGLE>
+  <SHOW_NORMAL><FILE>c:\users\daniel\Documents\Atmel Studio\7.0\LaxDemo5\LaxDemo5\main.asm</FILE><LINE>49</LINE></SHOW_NORMAL>
+  <SHOW_INVERT><FILE>c:\users\daniel\Documents\Atmel Studio\7.0\LaxDemo5\LaxDemo5\main.asm</FILE><LINE>41</LINE></SHOW_INVERT>
+  <INVERT_RIGHT><FILE>c:\users\daniel\Documents\Atmel Studio\7.0\LaxDemo5\LaxDemo5\main.asm</FILE><LINE>38</LINE></INVERT_RIGHT>
+  <WAIT_RELEASE><FILE>c:\users\daniel\Documents\Atmel Studio\7.0\LaxDemo5\LaxDemo5\main.asm</FILE><LINE>54</LINE></WAIT_RELEASE>
+ </LABELS>
+</ASSEMBLER_INFO>

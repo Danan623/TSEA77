@@ -1,9 +1,7 @@
 
 ; 1. Write a program that reads a value from an input port and displays it on a set of 4 LED lamps.
-; Hexa keyboard 0 to F will be 4 led if we choose to display it in binary.  
-; The program should continuously read the input value and update the LED lamps to match the value.
-; This program is uses a Hexa Keyboard but the code is easy to change to another input hardware.
-; This hardware use a Dalia card that is developed at Linköping University
+; Hardware : Hexa keyboard and LED
+; RULE: The program should continuously read the input value and update the LED lamps to match the value.
 
 COLD:
     ldi r16,HIGH(RAMEND) ; set stackpointers
@@ -22,7 +20,7 @@ MAIN:
 	rjmp MAIN
 
 CHANGE_VALUE:
-	in r16, PINA ; save the value from input pin to a register. In this case the register we use for output in MAIN
+	in r16, PINA ; save the value from input pin to a register. In this case the same register we use for output in MAIN
 
 WAIT_RELEASE:
 	sbic PIND,0 ; wait for button release
@@ -31,10 +29,10 @@ WAIT_RELEASE:
 
 INIT_IO: 
 	clr r17
-	out DDRA, r17 ; port-in : A0 -> A3 (0 to 15 binary)
-	out DDRD, r17 ; port-in : D0 if we use a HEXA keyboard (the strobe to indicate button pressed needs a port -in)
+	out DDRA, r17 ; in : A0 to A3 connect to 3,5,7,9 on Hexa
+	out DDRD, r17 ; in : D0 = strobe (Hexa keyboard)
 	
 	ldi r18,$FF 
-	out DDRB, r18 ; port-out : B0 -> B3 (0 to 15 binary) 
+	out DDRB, r18 ; out : B0 to B3 connect to pin 0 to pin 3 on LED 
 
 	ret

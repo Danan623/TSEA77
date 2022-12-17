@@ -1,10 +1,10 @@
 
-AVRASM ver. 2.2.8  C:\Users\Daniel\Documents\Atmel Studio\7.0\Traffic_light\Traffic_light\main.asm Tue Dec 13 12:13:09 2022
+AVRASM ver. 2.2.8  C:\Users\Daniel\Documents\Atmel Studio\7.0\LaxDemo4\LaxDemo4\main.asm Fri Dec 16 13:47:36 2022
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m16Adef.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m16Adef.inc'
                                  
-                                 ; 2. Write a program that implements a simple traffic light controller.
+                                 ;
                                  
                                  ;***** Created: 2011-02-09 12:03 ******* Source: ATmega16A.xml ***********
                                  ;*************************************************************************
@@ -870,67 +870,106 @@ AVRASM ver. 2.2.8  C:\Users\Daniel\Documents\Atmel Studio\7.0\Traffic_light\Traf
                                  #endif  /* _M16ADEF_INC_ */
                                  
                                  
-                                 ; The program should have three LED lamps that represent the red, yellow, and green lights of a traffic light. 
-                                 ; The program should cycle through the three colors according to the standard traffic light sequence (red, red+yellow, green, yellow, red, etc.).
-                                 
-                                 ; I will use the hardware available at the University (all LED lamps are red) but this can be simulated in a lot of ways
-                                 ; I will use two "switch" buttons in this problem.
-                                 ; Left button will make the traffic light go from green -> yellow -> red (or right most LED -> middle -> left)
-                                 ; And the right button will go from red -> red + yellow -> green
+                                 ; LaxDemo4.asm
+                                 ;
+                                 ; Hardware : Hexa keyboard and 7 -segment Display
+                                 ; Create a program that displays values from respective Hexa-key on the keyboard on the 7-segment display.
+                                 ; Rules : only the values 0 to 9 should be displayed. Only one display on the 7 - segment should show the current value.
+                                 ; If key F is pressed then toggle to the other display and show current value.
                                  
                                  COLD:
-000000 e004                          ldi r16,HIGH(RAMEND) ; set stackpointers
+000000 e004                      	ldi r16,HIGH(RAMEND)
 000001 bf0e                      	out SPH,r16
 000002 e50f                      	ldi r16,LOW(RAMEND)
 000003 bf0d                      	out SPL,r16
                                  
-000004 e001                      	ldi r16,$01 ; set the start setting to be "green", the right most LED
-                                 
-000005 940e 0021                 	call INIT_IO
-                                 	
+000004 940e 0035                 	call INIT_IO
                                  MAIN:
-000007 bb08                      	out PORTB, r16 ; show the current LED setting
-000008 9980                      	sbic PIND,0 ; scip next command if the button is not pressed (left button)
-000009 c003                      	rjmp MOVE_LEFT
-00000a 9981                      	sbic PIND,1 ; scip next command if the button is not pressed (right button)
-00000b c007                      	rjmp MOVE_RIGHT
-00000c cffa                      	rjmp MAIN
+000006 9984                      	sbic PIND,4 ; button pressed
+000007 c001                      	rjmp READ_DATA
+000008 cffd                      	rjmp MAIN
                                  
-                                 MOVE_LEFT:
-00000d 3004                      	cpi r16,$04 ; the we are at the red lamp and can't go more left. sets Z-flag if true
-00000e f059                      	breq WAIT_RELEASE
-00000f 3006                      	cpi r16,$06 ; if we don't want the traffic light to shift from red + yellow -> red
-000010 f049                      	breq WAIT_RELEASE
-000011 0f00                      	lsl r16 ; else move to left
-000012 c007                      	rjmp WAIT_RELEASE
+                                 READ_DATA:
+000009 b360                      	in r22,PIND ; read input data
+00000a 706f                      	andi r22,$0F
                                  
-                                 MOVE_RIGHT:
-000013 3001                      	cpi r16,$01 ; then we are at the right most position (green LED)
-000014 f029                      	breq WAIT_RELEASE
-000015 3002                      	cpi r16,$02 ; we don't want the traffic light to go from yellow -> green. but just red + yellow -> green
-000016 f019                      	breq WAIT_RELEASE
-000017 3004                      	cpi r16,$04 ; red light
-000018 f031                      	breq RED_YELLOW
-000019 e001                      	ldi r16,$01 ; else change to green
+00000b 3040                      	cpi r20,$00 ; right flag
+00000c f011                      	breq RIGHT_DISPLAY
+00000d 3041                      	cpi r20,$01 ; left flag
+00000e f079                      	breq LEFT_DISPLAY
                                  
-                                 WAIT_RELEASE:
-00001a 9980                      	sbic PIND,0 ; wait for button release left
-00001b cffe                      	rjmp WAIT_RELEASE
-00001c 9981                      	sbic PIND,1 ; wait for button release right
-00001d cffc                      	rjmp WAIT_RELEASE
-00001e cfe8                      	rjmp MAIN
-                                 
-                                 RED_YELLOW:
-00001f e006                      	ldi r16,$06
-000020 cff9                      	rjmp WAIT_RELEASE
-                                 
-                                 INIT_IO: 
-000021 2711                      	clr r17
-000022 bb11                      	out DDRD, r17 ; port-in : D0 = left button, D1 = right button
+                                 RIGHT_DISPLAY:
+00000f 306f                      	cpi r22,$0F ; check if F is pressed
+000010 f0a9                      	breq TOGGLE_LEFT
                                  	
-000023 ef2f                      	ldi r18,$FF 
-000024 bb27                      	out DDRB, r18 ; port-out : B0 -> B2 (green -> yellow -> red)
+000011 940e 0017                 	call CHECK_TEN
                                  
+000013 3041                      	cpi r20,$01 ; left flag
+000014 f0a9                      	breq SHOW_LEFT
+000015 3040                      	cpi r20,$00 ; right flag
+000016 f0b9                      	breq SHOW_RIGHT 	
+                                 	
+                                 CHECK_TEN: ; check if input > 9
+                                 
+000017 2f56                      	mov r21,r22 ; copy input data
+000018 9550                      	com r21 ; invert the bits
+000019 705f                      	andi r21,$0F ; clear high bits 
+00001a 5056                      	subi r21,$06 ; if it's A or more it will set the N flag (negative)
+00001b f0b2                      	brmi WAIT_RELEASE ; if negative = true
+00001c 2f06                      	mov r16,r22 ; else copy the input to output register (0 to 9 is valid values)
+                                 
+00001d 9508                      	ret
+                                 
+                                 LEFT_DISPLAY:
+00001e 306f                      	cpi r22,$0F ; check if F is pressed
+00001f f041                      	breq TOGGLE_RIGHT
+                                 
+000020 940e 0017                 	call CHECK_TEN
+                                 
+000022 3041                      	cpi r20,$01 ; left flag
+000023 f031                      	breq SHOW_LEFT
+000024 3040                      	cpi r20,$00 ; right flag
+000025 f041                      	breq SHOW_RIGHT 	
+                                 
+                                 TOGGLE_LEFT: ; change flag and toggle output
+000026 9543                      	inc r20
+000027 c002                      	rjmp SHOW_LEFT
+                                 
+                                 TOGGLE_RIGHT: ; change flag and toggle output
+000028 954a                      	dec r20
+000029 c004                      	rjmp SHOW_RIGHT
+                                 
+                                 SHOW_LEFT:
+00002a 2766                      	clr r22
+00002b bb6b                      	out PORTA,r22 ; show zero
+00002c bb08                      	out PORTB,r16 ; show input to left display
+                                 
+00002d c004                      	rjmp WAIT_RELEASE
+                                 
+                                 SHOW_RIGHT:
+00002e 2766                      	clr r22
+00002f bb68                      	out PORTB,r22 ; show zero
+000030 bb0b                      	out PORTA,r16 ; show input to right display
+                                 
+000031 c000                      	rjmp WAIT_RELEASE	
+                                 	
+                                 WAIT_RELEASE:
+000032 9984                      	sbic PIND,4
+000033 cffe                      	rjmp WAIT_RELEASE
+000034 cfd1                      	rjmp MAIN
+                                 
+                                 INIT_IO:
+000035 2711                      	clr r17
+000036 bb11                      	out DDRD,r17 ; in : D4 = strobe, D0 to D3 connect to pin 3,5,7,9 on Hexa 
+                                 	
+000037 ef2f                      	ldi r18, $FF
+000038 bb2a                      	out DDRA, r18 ; out : A0 to A3 connect to A to D on right display
+000039 bb27                      	out DDRB,r18 ; in : B0 to B3 connect to A to D on left display
+                                 	
+00003a 2700                      	clr r16 ; Start in 0
+00003b e041                      	ldi r20, $01 ; init current display
+                                 
+00003c 9508                      	ret
 
 
 RESOURCE USE INFORMATION
@@ -950,37 +989,37 @@ counted separately from r26..r31 here.
 "ATmega16A" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  14 r17:   2 r18:   2 r19:   0 r20:   0 
-r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
+r13:   0 r14:   0 r15:   0 r16:   8 r17:   2 r18:   3 r19:   0 r20:   9 
+r21:   4 r22:  10 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
-Registers used: 3 out of 35 (8.6%)
+Registers used: 6 out of 35 (17.1%)
 
 "ATmega16A" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
-andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
-brcc  :   0 brcs  :   0 break :   0 breq  :   5 brge  :   0 brhc  :   0 
-brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
+andi  :   2 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
+brcc  :   0 brcs  :   0 break :   0 breq  :   8 brge  :   0 brhc  :   0 
+brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   1 
 brne  :   0 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
-brvs  :   0 bset  :   0 bst   :   0 call  :   1 cbi   :   0 cbr   :   0 
-clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   1 cls   :   0 
-clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
-cpi   :   5 cpse  :   0 dec   :   0 eor   :   0 fmul  :   0 fmuls :   0 
-fmulsu:   0 icall :   0 ijmp  :   0 in    :   0 inc   :   0 jmp   :   0 
-ld    :   0 ldd   :   0 ldi   :   6 lds   :   0 lpm   :   0 lsl   :   1 
-lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   5 pop   :   0 
-push  :   0 rcall :   0 ret   :   1 reti  :   0 rjmp  :   8 rol   :   0 
-ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   4 sbis  :   0 
+brvs  :   0 bset  :   0 bst   :   0 call  :   3 cbi   :   0 cbr   :   0 
+clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   4 cls   :   0 
+clt   :   0 clv   :   0 clz   :   0 com   :   1 cp    :   0 cpc   :   0 
+cpi   :   8 cpse  :   0 dec   :   1 eor   :   0 fmul  :   0 fmuls :   0 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   1 inc   :   1 jmp   :   0 
+ld    :   0 ldd   :   0 ldi   :   4 lds   :   0 lpm   :   0 lsl   :   0 
+lsr   :   0 mov   :   2 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
+neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   9 pop   :   0 
+push  :   0 rcall :   0 ret   :   2 reti  :   0 rjmp  :   8 rol   :   0 
+ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   2 sbis  :   0 
 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
-sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 10 out of 113 (8.8%)
+sub   :   0 subi  :   1 swap  :   0 tst   :   0 wdr   :   0 
+Instructions used: 17 out of 113 (15.0%)
 
 "ATmega16A" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x00004c     76      0     76   16384   0.5%
+[.cseg] 0x000000 0x00007a    122      0    122   16384   0.7%
 [.dseg] 0x000060 0x000060      0      0      0    1024   0.0%
 [.eseg] 0x000000 0x000000      0      0      0     512   0.0%
 

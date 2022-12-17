@@ -26,7 +26,7 @@ MAIN:
 	rjmp MAIN
 
 MOVE_LEFT:
-	cpi r16,$04 ; the we are at the red lamp and can't go more left. sets Z-flag if true
+	cpi r16,$04 ; then we are at the red lamp and can't go more left. sets Z-flag if true
 	breq WAIT_RELEASE
 	cpi r16,$06 ; if we don't want the traffic light to shift from red + yellow -> red
 	breq WAIT_RELEASE
@@ -42,6 +42,10 @@ MOVE_RIGHT:
 	breq RED_YELLOW
 	ldi r16,$01 ; else change to green
 
+RED_YELLOW:
+	ldi r16,$06
+	
+
 WAIT_RELEASE:
 	sbic PIND,0 ; wait for button release left
 	rjmp WAIT_RELEASE
@@ -49,9 +53,6 @@ WAIT_RELEASE:
 	rjmp WAIT_RELEASE
 	rjmp MAIN
 
-RED_YELLOW:
-	ldi r16,$06
-	rjmp WAIT_RELEASE
 
 INIT_IO: 
 	clr r17

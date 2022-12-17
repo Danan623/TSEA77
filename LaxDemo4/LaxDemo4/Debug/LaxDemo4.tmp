@@ -1,0 +1,38 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega16A"</DEVICE>
+ <WORKING_DIR>C:\Users\Daniel\Documents\Atmel Studio\7.0\LaxDemo4\LaxDemo4\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\LaxDemo4\LaxDemo4\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m16Adef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\LaxDemo4\LaxDemo4\Debug\LaxDemo4.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>LaxDemo4.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>LaxDemo4.map</FILE>
+  <FILE>LaxDemo4.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <COLD><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\LaxDemo4\LaxDemo4\main.asm</FILE><LINE>9</LINE></COLD>
+  <INIT_IO><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\LaxDemo4\LaxDemo4\main.asm</FILE><LINE>90</LINE></INIT_IO>
+  <MAIN><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\LaxDemo4\LaxDemo4\main.asm</FILE><LINE>16</LINE></MAIN>
+  <READ_DATA><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\LaxDemo4\LaxDemo4\main.asm</FILE><LINE>21</LINE></READ_DATA>
+  <RIGHT_DISPLAY><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\LaxDemo4\LaxDemo4\main.asm</FILE><LINE>30</LINE></RIGHT_DISPLAY>
+  <LEFT_DISPLAY><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\LaxDemo4\LaxDemo4\main.asm</FILE><LINE>52</LINE></LEFT_DISPLAY>
+  <TOGGLE_LEFT><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\LaxDemo4\LaxDemo4\main.asm</FILE><LINE>63</LINE></TOGGLE_LEFT>
+  <CHECK_TEN><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\LaxDemo4\LaxDemo4\main.asm</FILE><LINE>41</LINE></CHECK_TEN>
+  <SHOW_LEFT><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\LaxDemo4\LaxDemo4\main.asm</FILE><LINE>71</LINE></SHOW_LEFT>
+  <SHOW_RIGHT><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\LaxDemo4\LaxDemo4\main.asm</FILE><LINE>78</LINE></SHOW_RIGHT>
+  <WAIT_RELEASE><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\LaxDemo4\LaxDemo4\main.asm</FILE><LINE>85</LINE></WAIT_RELEASE>
+  <TOGGLE_RIGHT><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\LaxDemo4\LaxDemo4\main.asm</FILE><LINE>67</LINE></TOGGLE_RIGHT>
+ </LABELS>
+</ASSEMBLER_INFO>
