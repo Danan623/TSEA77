@@ -1,0 +1,34 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega16A"</DEVICE>
+ <WORKING_DIR>C:\Users\Daniel\Documents\Atmel Studio\7.0\Tenta20221020\Tenta20221020\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\Tenta20221020\Tenta20221020\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m16Adef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\Tenta20221020\Tenta20221020\Debug\Tenta20221020.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Tenta20221020.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Tenta20221020.map</FILE>
+  <FILE>Tenta20221020.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <COLD><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\Tenta20221020\Tenta20221020\main.asm</FILE><LINE>9</LINE></COLD>
+  <INIT_IO><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\Tenta20221020\Tenta20221020\main.asm</FILE><LINE>51</LINE></INIT_IO>
+  <MAIN><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\Tenta20221020\Tenta20221020\main.asm</FILE><LINE>17</LINE></MAIN>
+  <CHECK_OUTPUT><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\Tenta20221020\Tenta20221020\main.asm</FILE><LINE>24</LINE></CHECK_OUTPUT>
+  <MOVE_LED><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\Tenta20221020\Tenta20221020\main.asm</FILE><LINE>36</LINE></MOVE_LED>
+  <CHANGE_OUTPUT><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\Tenta20221020\Tenta20221020\main.asm</FILE><LINE>29</LINE></CHANGE_OUTPUT>
+  <TOGGLE><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\Tenta20221020\Tenta20221020\main.asm</FILE><LINE>47</LINE></TOGGLE>
+  <WAIT_RELEASE><FILE>C:\Users\Daniel\Documents\Atmel Studio\7.0\Tenta20221020\Tenta20221020\main.asm</FILE><LINE>43</LINE></WAIT_RELEASE>
+ </LABELS>
+</ASSEMBLER_INFO>
